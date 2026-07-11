@@ -8,7 +8,15 @@ export default function ProductCard({ product }: { product: Product }) {
       href={`/shop/${product.slug}`}
       className="group rounded-2xl border border-ink/10 overflow-hidden bg-white/40 transition-all hover:-translate-y-1 hover:shadow-xl hover:shadow-ink/10 hover:border-ink/20 block"
     >
-      <div className="aspect-square bg-sand relative overflow-hidden" aria-hidden="true">
+      <div className="aspect-square bg-sand relative overflow-hidden">
+        {product.image && (
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        )}
         <div className="absolute inset-0 bg-teal/0 group-hover:bg-teal/5 transition-colors" />
       </div>
       <div className="p-5">

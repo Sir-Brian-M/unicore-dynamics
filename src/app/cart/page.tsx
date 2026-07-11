@@ -41,7 +41,15 @@ export default function CartPage() {
             <div className="divide-y divide-ink/10 border-y border-ink/10">
               {lines.map((line) => (
                 <div key={line.slug} className="flex items-center gap-4 py-5">
-                  <div className="h-20 w-20 rounded-xl bg-sand shrink-0" aria-hidden="true" />
+                  <div className="h-20 w-20 rounded-xl bg-sand shrink-0 overflow-hidden relative">
+                    {line.image && (
+                      <img
+                        src={line.image}
+                        alt={line.name}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
                   <div className="flex-1 min-w-0">
                     <Link
                       href={`/shop/${line.slug}`}

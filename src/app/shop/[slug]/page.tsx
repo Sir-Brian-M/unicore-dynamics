@@ -7,7 +7,7 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
 import AddToCartButton from "@/components/AddToCartButton";
 import ProductCard from "@/components/ProductCard";
-import { Product, formatPrice } from "@/data/products";
+import { Product, formatPrice, PRODUCT_IMAGES } from "@/data/products";
 import { supabaseAdmin } from "@/lib/supabase";
 
 export const revalidate = 0;
@@ -31,6 +31,7 @@ async function fetchProduct(slug: string): Promise<Product | null> {
     description: data.description,
     specs: data.specs,
     stock: data.stock,
+    image: PRODUCT_IMAGES[data.slug],
   };
 }
 
@@ -63,6 +64,7 @@ async function fetchAllProducts(): Promise<Product[]> {
       description: p.description,
       specs: p.specs,
       stock: p.stock,
+      image: PRODUCT_IMAGES[p.slug],
     })
   );
 }
@@ -113,7 +115,15 @@ export default async function ProductPage({ params }: { params: { slug: string }
         </nav>
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
-          <div className="aspect-square bg-sand rounded-2xl" aria-hidden="true" />
+          <div className="aspect-square bg-sand rounded-2xl overflow-hidden relative">
+            {product.image && (
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-full h-full object-cover"
+              />
+            )}
+          </div>
 
           <div>
             <p className="font-mono text-xs uppercase tracking-wide text-ink/50">

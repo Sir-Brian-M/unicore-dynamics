@@ -1,10 +1,49 @@
 import Link from "next/link";
-import { PRODUCTS } from "@/data/products";
+import { PRODUCTS, PRODUCT_IMAGES, Product } from "@/data/products";
+import { supabaseAdmin } from "@/lib/supabase";
 import ProductCard from "./ProductCard";
 import FadeIn from "./FadeIn";
 
-export default function FeaturedProducts() {
-  const featured = PRODUCTS.slice(0, 4);
+async function fetchFeaturedProducts(): Promise<Product[]> {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from("products")
+      .select("*")
+      .order("name", { ascending: true })
+      .limit(4);
+
+    if (error || !data) return [];
+
+    return data.map((p: {
+      slug: string;
+      name: string;
+      category: string;
+      age_range: string;
+      price: number;
+      cert: string;
+      description: string;
+      specs: Product["specs"];
+      stock: number;
+    }) => ({
+      slug: p.slug,
+      name: p.name,
+      category: p.category as Product["category"],
+      ageRange: p.age_range,
+      price: p.price,
+      cert: p.cert,
+      description: p.description,
+      specs: p.specs,
+      stock: p.stock,
+      image: PRODUCT_IMAGES[p.slug],
+    }));
+  } catch {
+    return [];
+  }
+}
+
+export default async function FeaturedProducts() {
+  const dbProducts = await fetchFeaturedProducts();
+  const featured = dbProducts.length > 0 ? dbProducts : PRODUCTS.slice(0, 4);
 
   return (
     <section className="py-14 sm:py-20 border-b border-ink/10">
