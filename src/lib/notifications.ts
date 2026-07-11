@@ -2,7 +2,7 @@ import { Resend } from "resend";
 
 const resendApiKey = process.env.RESEND_API_KEY || "";
 const resendFromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
-const resend = resendApiKey ? new Resend(resendApiKey) : null;
+const resend = resendApiKey && resendApiKey !== "your_resend_api_key" ? new Resend(resendApiKey) : null;
 
 const textsmsApiKey = process.env.TEXTSMS_API_KEY || "";
 const textsmsPartnerId = process.env.TEXTSMS_PARTNER_ID || "";

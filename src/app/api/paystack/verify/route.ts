@@ -105,8 +105,11 @@ export async function POST(request: NextRequest) {
         payment_status: "paid" as const,
         order_status: "placed" as const,
       };
-      void sendOrderConfirmationEmail(updatedOrderData);
-      void sendOrderConfirmationSMS(updatedOrderData);
+      // Await both notifications using Promise.allSettled so that failures in one do not block the other
+      await Promise.allSettled([
+        sendOrderConfirmationEmail(updatedOrderData),
+        sendOrderConfirmationSMS(updatedOrderData),
+      ]);
     }
 
     return NextResponse.json({ verified: true, data: paystackData.data });

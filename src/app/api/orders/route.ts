@@ -112,8 +112,11 @@ export async function POST(request: NextRequest) {
         items: orderItems,
       };
 
-      void sendOrderConfirmationEmail(fullOrder);
-      void sendOrderConfirmationSMS(fullOrder);
+      // Await both notifications using Promise.allSettled so that failures in one do not block the other
+      await Promise.allSettled([
+        sendOrderConfirmationEmail(fullOrder),
+        sendOrderConfirmationSMS(fullOrder),
+      ]);
     }
 
     return NextResponse.json({ success: true, reference, total });
