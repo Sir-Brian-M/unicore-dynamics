@@ -4,12 +4,14 @@ export type Product = {
   category: "Nursery & Infant" | "Everyday Essentials" | "Growing Years" | "Play";
   ageRange: string;
   price: number;
+  comparePrice?: number;
   cert: string;
   description: string;
   specs: { label: string; value: string }[];
   stock: number;
   image?: string;
   badge?: "New" | "Hot" | "Sale" | "Low Stock";
+  rating?: number; // 1-5
 };
 
 export const PRODUCT_IMAGES: Record<string, string> = {
@@ -22,15 +24,28 @@ export const PRODUCT_IMAGES: Record<string, string> = {
   "safari-scooter-3-wheel": "https://images.unsplash.com/photo-1597200381847-30ec200eeb9a?w=1000&q=80",
   "duru-wooden-shape-sorter": "https://images.unsplash.com/photo-1515488042361-404e9250afef?w=1000&q=80",
   "twiga-outdoor-climbing-frame": "https://images.unsplash.com/photo-1581579438747-1dc8d1e0ca96?w=1000&q=80",
-  // New products
+  // Ride-ons & Powered
   "punda-power-quad-bike": "https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=1000&q=80",
   "simba-electric-ride-on-car": "https://images.unsplash.com/photo-1471286174890-9c112ffca5b4?w=1000&q=80",
   "chui-rc-racing-car": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80",
+  // Play
   "tembo-play-tent": "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=1000&q=80",
-  "kipindi-baby-walker": "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1000&q=80",
   "jenga-building-blocks-set": "https://images.unsplash.com/photo-1558877385-81a1c7e67d72?w=1000&q=80",
   "nyumba-wooden-doll-house": "https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=1000&q=80",
   "bembea-garden-swing-set": "https://images.unsplash.com/photo-1576769562804-455efad26b4a?w=1000&q=80",
+  // Infant
+  "kipindi-baby-walker": "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=1000&q=80",
+  // NEW — competitor-inspired
+  "hova-65-hoverboard-bluetooth": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=1000&q=80",
+  "hova-8-hoverboard-offroad": "https://images.unsplash.com/photo-1575550959106-5a7defe28b56?w=1000&q=80",
+  "hova-10-allterrain-hoverboard": "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=1000&q=80",
+  "jumper-12ft-trampoline-net": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=1000&q=80",
+  "ndege-electric-balance-bike": "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?w=1000&q=80",
+  "splash-water-sprinkler-mat": "https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=1000&q=80",
+  "pool-ball-pit-inflatable": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1000&q=80",
+  "doodle-magnetic-drawing-board": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=1000&q=80",
+  "gym-foam-crash-mat": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1000&q=80",
+  "radio-walkie-talkie-set": "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=1000&q=80",
 };
 
 export const PRODUCTS: Product[] = [
@@ -41,6 +56,7 @@ export const PRODUCTS: Product[] = [
     category: "Nursery & Infant",
     ageRange: "0 to 4 yrs",
     price: 24500,
+    comparePrice: 27000,
     cert: "UN R129 certified",
     description:
       "Converts from rear-facing infant seat to forward-facing to booster, built to last through four years of actual use rather than four months.",
@@ -53,6 +69,7 @@ export const PRODUCTS: Product[] = [
     stock: 14,
     image: PRODUCT_IMAGES["rowan-3in1-convertible-car-seat"],
     badge: "Hot",
+    rating: 4.9,
   },
   {
     slug: "amara-foldable-travel-stroller",
@@ -71,6 +88,7 @@ export const PRODUCTS: Product[] = [
     ],
     stock: 22,
     image: PRODUCT_IMAGES["amara-foldable-travel-stroller"],
+    rating: 4.7,
   },
   {
     slug: "kipindi-baby-walker",
@@ -90,6 +108,7 @@ export const PRODUCTS: Product[] = [
     stock: 30,
     image: PRODUCT_IMAGES["kipindi-baby-walker"],
     badge: "New",
+    rating: 4.6,
   },
 
   // ── Everyday Essentials ───────────────────────────────────────────────────────
@@ -109,6 +128,7 @@ export const PRODUCTS: Product[] = [
     ],
     stock: 40,
     image: PRODUCT_IMAGES["nia-baby-feeding-set"],
+    rating: 4.5,
   },
   {
     slug: "jamii-cotton-sleepsuit-pack",
@@ -124,6 +144,27 @@ export const PRODUCTS: Product[] = [
     ],
     stock: 55,
     image: PRODUCT_IMAGES["jamii-cotton-sleepsuit-pack"],
+    rating: 4.8,
+  },
+  {
+    slug: "doodle-magnetic-drawing-board",
+    name: "Doodle Magnetic Drawing Board",
+    category: "Everyday Essentials",
+    ageRange: "2 to 8 yrs",
+    price: 1600,
+    comparePrice: 1800,
+    cert: "EN 71 certified, non-toxic",
+    description:
+      "Full-screen magnetic drawing board with erase slider. Durable ABS frame, mess-free creativity anywhere. Perfect for car journeys and restaurant waits.",
+    specs: [
+      { label: "Screen size", value: "30 x 22 cm" },
+      { label: "Material", value: "ABS plastic, non-toxic" },
+      { label: "Includes", value: "1 stylus, 2 stampers" },
+    ],
+    stock: 65,
+    image: PRODUCT_IMAGES["doodle-magnetic-drawing-board"],
+    badge: "Sale",
+    rating: 4.4,
   },
 
   // ── Growing Years ─────────────────────────────────────────────────────────────
@@ -143,6 +184,7 @@ export const PRODUCTS: Product[] = [
     stock: 18,
     image: PRODUCT_IMAGES["kito-16-inch-kids-bike"],
     badge: "Hot",
+    rating: 4.7,
   },
   {
     slug: "nuru-wooden-learning-desk",
@@ -160,6 +202,7 @@ export const PRODUCTS: Product[] = [
     stock: 9,
     image: PRODUCT_IMAGES["nuru-wooden-learning-desk"],
     badge: "Low Stock",
+    rating: 4.6,
   },
   {
     slug: "safari-scooter-3-wheel",
@@ -175,6 +218,7 @@ export const PRODUCTS: Product[] = [
     ],
     stock: 26,
     image: PRODUCT_IMAGES["safari-scooter-3-wheel"],
+    rating: 4.5,
   },
   {
     slug: "punda-power-quad-bike",
@@ -182,6 +226,7 @@ export const PRODUCTS: Product[] = [
     category: "Growing Years",
     ageRange: "3 to 8 yrs",
     price: 18500,
+    comparePrice: 21000,
     cert: "EN 71 certified, CE marked",
     description:
       "Battery-powered 4-wheel quad bike with parental remote override, forward/reverse gears, and chunky all-terrain wheels. Handles Nairobi's varied surfaces.",
@@ -195,6 +240,7 @@ export const PRODUCTS: Product[] = [
     stock: 12,
     image: PRODUCT_IMAGES["punda-power-quad-bike"],
     badge: "Hot",
+    rating: 4.8,
   },
   {
     slug: "simba-electric-ride-on-car",
@@ -215,6 +261,7 @@ export const PRODUCTS: Product[] = [
     stock: 8,
     image: PRODUCT_IMAGES["simba-electric-ride-on-car"],
     badge: "New",
+    rating: 4.7,
   },
   {
     slug: "chui-rc-racing-car",
@@ -233,6 +280,93 @@ export const PRODUCTS: Product[] = [
     ],
     stock: 35,
     image: PRODUCT_IMAGES["chui-rc-racing-car"],
+    rating: 4.5,
+  },
+  {
+    slug: "hova-65-hoverboard-bluetooth",
+    name: "Hova 6.5\" Smart Hoverboard",
+    category: "Growing Years",
+    ageRange: "6 to 14 yrs",
+    price: 16900,
+    comparePrice: 18499,
+    cert: "CE certified, UL 2272",
+    description:
+      "Self-balancing electric hoverboard with Bluetooth speaker, RGB LED underglow lights, and dual 250W motors. Anti-slip foot pads, self-balancing assist mode for beginners.",
+    specs: [
+      { label: "Motors", value: "2 x 250W brushless" },
+      { label: "Top speed", value: "12 km/h" },
+      { label: "Range", value: "10–15 km per charge" },
+      { label: "Charging time", value: "2–3 hours" },
+      { label: "Max weight", value: "120 kg" },
+    ],
+    stock: 20,
+    image: PRODUCT_IMAGES["hova-65-hoverboard-bluetooth"],
+    badge: "Hot",
+    rating: 4.6,
+  },
+  {
+    slug: "hova-8-hoverboard-offroad",
+    name: "Hova 8\" Off-Road Hoverboard",
+    category: "Growing Years",
+    ageRange: "8 to 16 yrs",
+    price: 20500,
+    comparePrice: 22999,
+    cert: "CE certified, UL 2272",
+    description:
+      "All-terrain 8-inch solid rubber tyres handle grass, gravel, and rough roads. Bluetooth speaker, LED lights, and longer 90-minute ride time.",
+    specs: [
+      { label: "Tyre type", value: "8-inch solid rubber, all-terrain" },
+      { label: "Motors", value: "2 x 350W brushless" },
+      { label: "Top speed", value: "15 km/h" },
+      { label: "Range", value: "15–20 km" },
+      { label: "Max weight", value: "120 kg" },
+    ],
+    stock: 14,
+    image: PRODUCT_IMAGES["hova-8-hoverboard-offroad"],
+    badge: "Sale",
+    rating: 4.7,
+  },
+  {
+    slug: "hova-10-allterrain-hoverboard",
+    name: "Hova 10\" All-Terrain Hoverboard",
+    category: "Growing Years",
+    ageRange: "10 to 16 yrs",
+    price: 22900,
+    cert: "CE certified, UL 2272",
+    description:
+      "Our most powerful hoverboard. 10-inch pneumatic tyres, 500W dual motors, and handle strap included. IPX4 water resistance — rides through light rain.",
+    specs: [
+      { label: "Tyre type", value: "10-inch pneumatic" },
+      { label: "Motors", value: "2 x 500W brushless" },
+      { label: "Top speed", value: "18 km/h" },
+      { label: "Water resistance", value: "IPX4" },
+      { label: "Max weight", value: "120 kg" },
+    ],
+    stock: 7,
+    image: PRODUCT_IMAGES["hova-10-allterrain-hoverboard"],
+    badge: "New",
+    rating: 4.9,
+  },
+  {
+    slug: "ndege-electric-balance-bike",
+    name: "Ndege Electric Balance Bike 3-in-1",
+    category: "Growing Years",
+    ageRange: "1 to 5 yrs",
+    price: 11200,
+    comparePrice: 12500,
+    cert: "EN 71-8, CE certified",
+    description:
+      "Converts from push walker → balance bike → motorised ride-on as your child grows. Rechargeable battery, adjustable seat, soft EVA foam tyres.",
+    specs: [
+      { label: "Modes", value: "3 (walker / balance / electric)" },
+      { label: "Battery", value: "6V 4Ah rechargeable" },
+      { label: "Speed", value: "3 km/h (electric mode)" },
+      { label: "Seat height", value: "Adjustable 28–38 cm" },
+    ],
+    stock: 18,
+    image: PRODUCT_IMAGES["ndege-electric-balance-bike"],
+    badge: "Sale",
+    rating: 4.8,
   },
 
   // ── Play ──────────────────────────────────────────────────────────────────────
@@ -250,6 +384,7 @@ export const PRODUCTS: Product[] = [
     ],
     stock: 60,
     image: PRODUCT_IMAGES["duru-wooden-shape-sorter"],
+    rating: 4.5,
   },
   {
     slug: "twiga-outdoor-climbing-frame",
@@ -267,6 +402,7 @@ export const PRODUCTS: Product[] = [
     stock: 5,
     image: PRODUCT_IMAGES["twiga-outdoor-climbing-frame"],
     badge: "Low Stock",
+    rating: 4.8,
   },
   {
     slug: "tembo-play-tent",
@@ -276,7 +412,7 @@ export const PRODUCTS: Product[] = [
     price: 3400,
     cert: "EN 71 certified, flame retardant fabric",
     description:
-      "Pop-up play tent in elephant theme with mesh windows for ventilation. Sets up in 30 seconds, folds flat in seconds. Indoor or shaded outdoor use.",
+      "Pop-up play tent in elephant theme with mesh windows for ventilation. Sets up in 30 seconds, folds flat. Indoor or shaded outdoor use.",
     specs: [
       { label: "Size", value: "120 x 100 x 90 cm" },
       { label: "Material", value: "Polyester, steel frame" },
@@ -285,6 +421,7 @@ export const PRODUCTS: Product[] = [
     stock: 42,
     image: PRODUCT_IMAGES["tembo-play-tent"],
     badge: "New",
+    rating: 4.6,
   },
   {
     slug: "jenga-building-blocks-set",
@@ -303,6 +440,7 @@ export const PRODUCTS: Product[] = [
     ],
     stock: 50,
     image: PRODUCT_IMAGES["jenga-building-blocks-set"],
+    rating: 4.5,
   },
   {
     slug: "nyumba-wooden-doll-house",
@@ -321,6 +459,7 @@ export const PRODUCTS: Product[] = [
     ],
     stock: 16,
     image: PRODUCT_IMAGES["nyumba-wooden-doll-house"],
+    rating: 4.7,
   },
   {
     slug: "bembea-garden-swing-set",
@@ -341,6 +480,114 @@ export const PRODUCTS: Product[] = [
     stock: 10,
     image: PRODUCT_IMAGES["bembea-garden-swing-set"],
     badge: "Hot",
+    rating: 4.8,
+  },
+  {
+    slug: "jumper-12ft-trampoline-net",
+    name: "Jumper 12ft Trampoline with Safety Net",
+    category: "Play",
+    ageRange: "3 to 14 yrs",
+    price: 47500,
+    comparePrice: 51999,
+    cert: "EN 71-8, CE certified",
+    description:
+      "Full 12-foot garden trampoline with enclosure safety net, padded spring cover, and galvanised steel legs. UV-resistant mat rated for Kenyan outdoor use year-round. Includes ladder.",
+    specs: [
+      { label: "Diameter", value: "12 ft (366 cm)" },
+      { label: "Frame", value: "Galvanised steel" },
+      { label: "Max weight", value: "150 kg" },
+      { label: "Springs", value: "72 galvanised" },
+      { label: "Safety net", value: "Included, zip-close" },
+      { label: "Ladder", value: "Included" },
+    ],
+    stock: 6,
+    image: PRODUCT_IMAGES["jumper-12ft-trampoline-net"],
+    badge: "Hot",
+    rating: 4.9,
+  },
+  {
+    slug: "splash-water-sprinkler-mat",
+    name: "Splash Water Sprinkler Play Mat",
+    category: "Play",
+    ageRange: "1 to 8 yrs",
+    price: 2800,
+    comparePrice: 3200,
+    cert: "EN 71 certified, non-toxic PVC",
+    description:
+      "Connect to any garden hose — the mat inflates and jets water through 12 nozzles for outdoor cool-down play. Non-slip base, folds for storage.",
+    specs: [
+      { label: "Size", value: "150 cm diameter" },
+      { label: "Nozzles", value: "12 rotating water jets" },
+      { label: "Material", value: "Non-toxic PVC, 0.4mm thick" },
+      { label: "Hose connector", value: "Universal fit" },
+    ],
+    stock: 35,
+    image: PRODUCT_IMAGES["splash-water-sprinkler-mat"],
+    badge: "Sale",
+    rating: 4.6,
+  },
+  {
+    slug: "pool-ball-pit-inflatable",
+    name: "Kpool Inflatable Ball Pit Pool",
+    category: "Play",
+    ageRange: "1 to 6 yrs",
+    price: 4200,
+    comparePrice: 4800,
+    cert: "EN 71 certified, non-toxic",
+    description:
+      "Large inflatable ball pit that doubles as a shallow pool. Thick PVC walls, drain plug, repair patch included. Use indoors or on a shaded patio.",
+    specs: [
+      { label: "Size", value: "120 x 120 x 60 cm" },
+      { label: "Capacity", value: "200 balls (not included)" },
+      { label: "Material", value: "Thick PVC, 0.5mm" },
+      { label: "Pool depth", value: "20 cm water capacity" },
+    ],
+    stock: 28,
+    image: PRODUCT_IMAGES["pool-ball-pit-inflatable"],
+    badge: "Sale",
+    rating: 4.5,
+  },
+  {
+    slug: "gym-foam-crash-mat",
+    name: "ProKid Gymnastics Foam Crash Mat",
+    category: "Play",
+    ageRange: "3 to 14 yrs",
+    price: 7800,
+    comparePrice: 8500,
+    cert: "EN 71-8, flame retardant",
+    description:
+      "High-density foam crash mat with removable, washable cover. Ideal for gymnastics practice, jumping, and general roughhousing. Non-slip base.",
+    specs: [
+      { label: "Size", value: "120 x 80 x 10 cm" },
+      { label: "Foam density", value: "High-density PE foam" },
+      { label: "Cover", value: "Removable, machine-washable" },
+      { label: "Base", value: "Non-slip grip" },
+    ],
+    stock: 22,
+    image: PRODUCT_IMAGES["gym-foam-crash-mat"],
+    badge: "Sale",
+    rating: 4.7,
+  },
+  {
+    slug: "radio-walkie-talkie-set",
+    name: "Explorer Kids Walkie-Talkie Set",
+    category: "Play",
+    ageRange: "4 to 12 yrs",
+    price: 2100,
+    comparePrice: 2400,
+    cert: "CE certified, FCC",
+    description:
+      "Pair of long-range walkie-talkies with 22 channels, 3 km open-field range, built-in LED torch, and weather-resistant casing. USB rechargeable.",
+    specs: [
+      { label: "Range", value: "Up to 3 km (open field)" },
+      { label: "Channels", value: "22" },
+      { label: "Battery", value: "USB rechargeable" },
+      { label: "Extras", value: "LED torch, belt clip x2" },
+    ],
+    stock: 40,
+    image: PRODUCT_IMAGES["radio-walkie-talkie-set"],
+    badge: "New",
+    rating: 4.4,
   },
 ];
 

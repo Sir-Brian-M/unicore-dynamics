@@ -319,6 +319,84 @@ export default function AboutPage() {
           </div>
         </section>
 
+        {/* ── By the Numbers ── */}
+        <section className="py-16 sm:py-24 border-b border-ink/10">
+          <div className="mx-auto max-w-content px-5 sm:px-8">
+            <motion.div
+              {...fadeUpProps(0)}
+              className="max-w-lg mb-12"
+            >
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal mb-3">
+                Our Scale
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink tracking-tight">
+                By the Numbers
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              {[
+                { value: "48+", county: "Counties Delivered" },
+                { value: "100%", county: "Safety Audited" },
+                { value: "15 min", county: "WhatsApp Response" },
+                { value: "350+", county: "Verified Reviews" },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  {...fadeUpProps(i * 0.08)}
+                  className="rounded-2xl border border-ink/5 bg-white p-6 shadow-sm text-center"
+                >
+                  <p className="font-mono text-3xl font-extrabold text-teal">{item.value}</p>
+                  <p className="text-xs text-ink/65 mt-2 font-medium">{item.county}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Our Certifications Showcase ── */}
+        <section className="py-16 sm:py-24 border-b border-ink/10 bg-stone/30">
+          <div className="mx-auto max-w-content px-5 sm:px-8">
+            <motion.div
+              {...fadeUpProps(0)}
+              className="max-w-lg mb-12"
+            >
+              <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal mb-3">
+                Vetted Standards
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl font-semibold text-ink tracking-tight">
+                Our Certifications
+              </h2>
+            </motion.div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+              {["ECE R129", "EN 71", "ASTM F963", "OEKO-TEX", "CE Conformity", "FSC Wood"].map((cert, i) => (
+                <motion.div
+                  key={cert}
+                  {...fadeUpProps(i * 0.05)}
+                  className="rounded-2xl border border-ink/8 bg-white p-4 text-center flex items-center justify-center h-20 shadow-sm"
+                >
+                  <span className="font-display font-bold text-xs text-ink/80">{cert}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Press & Recognition ── */}
+        <section className="py-12 border-b border-ink/10 bg-white">
+          <div className="mx-auto max-w-content px-5 sm:px-8">
+            <p className="text-center font-mono text-[9px] uppercase tracking-widest text-ink/35 mb-6">
+              Mentions & Recognition
+            </p>
+            <div className="flex flex-wrap items-center justify-center gap-12 grayscale opacity-45">
+              {["Business Daily", "Standard Media", "Citizen TV", "Daily Nation"].map((logo) => (
+                <span key={logo} className="font-display font-semibold text-sm text-ink">{logo}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── Location / CTA ────────────────────────────────────────────── */}
         <section className="py-16 sm:py-24">
           <div className="mx-auto max-w-content px-5 sm:px-8">
