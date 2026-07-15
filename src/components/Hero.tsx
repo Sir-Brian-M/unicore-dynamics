@@ -99,13 +99,13 @@ export default function Hero() {
             className="max-w-xl"
           >
             <p className="font-mono text-xs uppercase tracking-[0.2em] text-teal mb-5 font-bold">
-              Nursery to primary school, age 0 to 12
+              Safe Active Play, Ages 0 to 12
             </p>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-[3.2rem] leading-[1.05] font-semibold text-ink tracking-tight">
-              Gear built for real family life.
+              Premium Kids' Gear & Active Play Equipment.
             </h1>
             <p className="mt-6 text-base sm:text-lg text-ink/75 leading-relaxed">
-              From safety-tested car seats to durable off-road hoverboards and trampolines. Unicore Dynamics is where Kenyan parents find equipment that actually holds up, backed by verified safety standards.
+              From heavy-duty trampolines and bouncing castles to electric ride-on cars, hoverboards, and family frame swimming pools. We bring safety-certified active play equipment straight to Kenyan families, backed by cash on delivery.
             </p>
 
             <div className="mt-9 flex flex-col sm:flex-row gap-3">
@@ -113,7 +113,7 @@ export default function Hero() {
                 href="/shop"
                 className="group inline-flex items-center justify-center gap-2 rounded-full bg-ink px-7 py-3.5 text-sm font-semibold text-stone hover:bg-ink/90 transition-all hover:shadow-lg hover:shadow-ink/20 hover:-translate-y-0.5"
               >
-                Shop by age and stage
+                Explore Active Play Gear
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
@@ -126,7 +126,7 @@ export default function Hero() {
 
             <dl className="mt-12 grid grid-cols-3 gap-6 max-w-md">
               {[
-                { value: "97+", label: "products crawled" },
+                { value: "88+", label: "crawled products" },
                 { value: "Pay on Del", label: "available" },
                 { value: "0 to 12", label: "years covered" },
               ].map((stat, i) => (

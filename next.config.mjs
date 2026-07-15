@@ -10,8 +10,17 @@ const nextConfig = {
         protocol: "https",
         hostname: "payafterdelivery.co.ke",
       },
+      {
+        protocol: "https",
+        hostname: "totochap.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.polyplay.co.ke",
+      },
     ],
   },
+
   eslint: {
     ignoreDuringBuilds: true,
   },
